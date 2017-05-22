@@ -1,5 +1,5 @@
-# This the data for Test Case 1: Synthetic dataset simulated using the Decker
-canine model.
+# This the data for Test Case 1
+## Synthetic dataset simulated using the Decker canine model.
 To deflate the files with ".bin" extensions (in binary formats), run the
 following command:
 > python ../deflate.py [fileName]
