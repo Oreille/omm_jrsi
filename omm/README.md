@@ -25,6 +25,7 @@ binary format. Simply run:
 > python ../compress.py [your_file_in_ascii_format]
 
 The ascii files should have the following formats:
+
     * data.bin: (numSamples, nT)
     * collocation.bin: (numSamples, p) where p is the number of uncertain parameters
 
