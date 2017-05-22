@@ -30,13 +30,12 @@ using namespace std;
 
 int main(int argc, char ** argv) {
 
-//  double ti = clock();
 
   if (argc != 2){puts("Error : Wrong number of arguments. Specify your case name."); return 1;}
   const string caseName = argv[1];  
 
-  cout << "Estimate the probability density" << endl;
-  const string dirOfLog = "../../../Data/" + caseName;
+  cout << "Estimating the PDF from your data using the OMM algorithm." << endl;
+  const string dirOfLog = "./" + caseName;
   
   DE estimation;
   estimation.initialize(dirOfLog);
