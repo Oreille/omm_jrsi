@@ -23,6 +23,7 @@ For speed and memory reasons, the program takes these files in binary
 format. If you're using your own data, you must convert your ascii files to our
 binary format. Simply run:
 > python ../compress.py [your_file_in_ascii_format]
+
 The ascii files should have the following formats:
     * data.bin: (numSamples, nT)
     * collocation.bin: (numSamples, p) where p is the number of uncertain parameters
