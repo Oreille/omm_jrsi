@@ -35,13 +35,16 @@ To compile the code, run the following command:
 
 ### Execution
 > computePDF demo [or *your_case_name*]
+
 The output of the program is stored in pdf.txt. This file should have
 numSamples lines and (p+1) columns. The parameter samples are replicated in the
 first p columns and the PDF values are in the last column.
 There are several options to visualize the results:
 > python pdfplot.py pdf.txt 
+
 which outputs the point-wise values of the PDF projected onto each parameter
 axis.
 > python plot_pdf_3d.py 
+
 which makes a surface plot (only works when p=2) of the PDF. This only works
 with recent versions of matplotlib.
