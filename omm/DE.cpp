@@ -324,7 +324,10 @@ void DE::findSaddlePoint(){
   }
   cout << "Truncation after " << trunc << " singular values." << endl;
 
-  U.conservativeResize(nS,trunc); V.conservativeResize(nH-1,trunc); S.conservativeResize(trunc,trunc);
+  U.conservativeResize(nS,trunc); 
+  V.conservativeResize(nH-1,trunc); 
+  S.conservativeResize(trunc,trunc);
+
   MatrixXd H(trunc+1,trunc+1); MatrixXd H1(trunc,trunc); MatrixXd H2(trunc,1); MatrixXd H3(1,1);
   VectorXd x(trunc+1);
   MatrixXd P(trunc+1,trunc+1);
@@ -337,7 +340,6 @@ void DE::findSaddlePoint(){
   //--------------------
 
   double prevRes = 1.e10;
-  ofstream outFile("outDE.txt");
   cout << scientific; cout.precision(3);
   for (int iter=0; iter<maxIter; iter++){ 
 
@@ -391,10 +393,12 @@ void DE::findSaddlePoint(){
     x = P*R;
 
     cout << " | |x|= " << x.norm() << " | cond= " << cond<< " | sigma= " << kount <<"/"<<trunc+1 << endl;
-    //cout << H << endl;
-
-    beta -= x.head(nH-1);
+    //cout << "nH = " << nH << endl;
+    cout << "x.cols = " << x.cols() << "x.rows = " << x.rows() << endl;
+    beta -= x.head(trunc);
+    cout << "OK 1" << endl;
     mu   -= (x.tail(1))(0);
+    cout << "OK 2" << endl;
 
   }
 
@@ -407,7 +411,6 @@ void DE::findSaddlePoint(){
   m_lambda = lambda;
   m_mu = mu;
 
-  outFile.close();
 }
 
 // 1.4.2 read Text Files
