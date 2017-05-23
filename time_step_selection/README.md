@@ -34,9 +34,12 @@ It is read line by line and organized as follows:
 
 > python activeClustering.py TSS.log
 
-> python extractSelection [caseName] [glob_iter] [number_of_selected_time_steps]
+> python extractSelection [caseName] [glob_iter]
+  [number_of_selected_time_steps]
+
+** For the demo > python extractSelection demo 0 20
 
 ### Execute OMM
 
-You can now move the "selectedTimeSteps.txt" to your case folder in the ../OMM/
+You can now move the "selectedTimeSteps.txt" file to your case folder in the ../OMM/
 directory and execute the inverse procedure.
