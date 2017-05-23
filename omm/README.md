@@ -26,7 +26,7 @@ binary format. Simply run:
 
 The ascii files should have the following formats:
 
-    * data.bin: (numSamples, nT)
+    * data.bin: (numSamples, nT) where numSamples is the size 
     * collocation.bin: (numSamples, p) where p is the number of uncertain parameters
 
 ### Compilation
@@ -36,6 +36,15 @@ To compile the code, run the following command:
 > g++ -O3 -I [path_to_Eigen_include] -I [path_to_gsl_include] main.cpp DE.cpp -o computePDF -lgsl -lgslcblas -lm
 
 ### Execution
+Before executing the program, you need to set some parameters of the method in
+a log file named "DE.log" and located in your case directory (here the demo/
+directory). The log file is read line by line and organized as follows:
+
+    * 
+
+    * 
+
+Then execute the program:
 > computePDF demo [or *your_case_name*]
 
 The output of the program is stored in pdf.txt. This file should have
