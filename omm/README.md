@@ -27,7 +27,7 @@ binary format. Simply run:
 The ascii files should have the following formats:
 
     * data.txt: (numSamples, nT) where numSamples is the total number of samples in the simulation data set.
-    * collocation.txt: (*numSamples*, *p*) where *p* is the number of uncertain
+    * collocation.txt: (numSamples, p) where p is the number of uncertain
     parameters
 
 * "DE.log" log file: you need to set some parameters of the method in
