@@ -1,8 +1,6 @@
-# DEMMA: Density Estimation using the observable Moment Matching Approach 
+# OMM: Observable Moment Matching
 
-## This the numerical code used to compute the Probability Density Function (PDF)
-from the variability observed in measurements (whether synthetic or
-experimental). You will find below details about how to set up a demo test case.
+### This the numerical code used to compute the Probability Density Function (PDF) from the variability observed in measurements (whether synthetic or experimental). You will find below details about how to set up a demo test case.
 
 The code is written in C++ (C++98 standard) and is divided into three files:
 * main.cpp
@@ -28,9 +26,9 @@ binary format. Simply run:
 
 The ascii files should have the following formats:
 
-    * data.bin: (*numSamples*, *nT*) where *numSamples* is the total number of samples in
+    * data.bin: (numSamples, nT) where numSamples is the total number of samples in
 the simulation data set.
-    * collocation.bin: (*numSamples*, *p*) where *p* is the number of uncertain parameters
+    * collocation.bin: (_numSamples_, p) where *p* is the number of uncertain parameters
 
 ### Compilation
 **Make sure you have Eigen 3 and GSL implementation of BLAS installed**
@@ -43,14 +41,14 @@ Before executing the program, you need to set some parameters of the method in
 a log file named "DE.log" and located in your case directory (here the demo/
 directory). The log file is read line by line and organized as follows:
 
-    * *p*: number of parameters (int)
-    * *Nc*: number of samples (int). Must be <= *numSamples*
-    * *Nm*: number of moments (int)
+    * p: number of parameters (int)
+    * Nc: number of samples (int). Must be <= numSamples
+    * Nm: number of moments (int)
     * Directory of your simulations set (string)
     * Directory of your measurements set (string)
     * File prefix of your measurements moments (string)
     * Maximum iterations of the Newton method (int)
-    * Tolerance on the representation error (double) *[1]*
+    * Tolerance on the representation error (double) [1]
     * Tolerance on the pseudo-inverse calculation (double)
 
 *[1] See https://hal.archives-ouvertes.fr/hal-01391254 for implementation details*
@@ -65,8 +63,8 @@ When you're ready, execute the program:
 > computePDF demo [OR *your_case_name*]
 
 The output of the program is stored in an ascii file named "pdf.txt". This file should have
-*Nc* lines and (*p*+1) columns. The parameter samples are replicated in the
-first *p* columns and the PDF values are in the last column.
+Nc lines and (p+1) columns. The parameter samples are replicated in the
+first p columns and the PDF values are in the last column.
 There are several options to visualize the results:
 > python pdfplot.py pdf.txt 
 
@@ -81,5 +79,7 @@ with recent versions of matplotlib.
 ## To execute only the demo, run the following commands:
 >g++ -O3 -I [path_to_Eigen_include] -I [path_to_gsl_include] main.cpp DE.cpp -o
 computePDF -lgsl -lgslcblas -lm
+
 >computePDF demo
+
 >python pdfplot.py pdf.txt
