@@ -11,12 +11,12 @@ The code is written in C++ (C++98 standard) and is divided into three files:
 We provided a demonstration test case which shows the expected structure of
 your data.
 The demo/ directory is organized as follows:
-* measurements/: in this directory are stored the moments of your measurements
+* "measurements/": in this directory are stored the moments of your measurements
 (whether experimental or synthetic). For each mth order moment, there should be
 a file named "moment[*m*].txt" of size (nt,1) where nt is the total number of
 time steps in your signals. In this demo, the moments have been computed
 *after* noise had been added to the synthetic measurements.
-* simulations/: in this directory are stored the model outputs "data.bin" and the
+* "simulations/": in this directory are stored the model outputs "data.bin" and the
 collocation points "collocation.bin" (parameter samples used in the OMM
 algorithm).
 For speed and memory reasons, the program takes these files in binary
@@ -40,7 +40,7 @@ this file. It is read line by line and organized as follows:
     * Directory of your measurements set (string)
     * File prefix of your measurements moments (string)
     * Maximum iterations of the Newton method (int)
-    * Tolerance on the representation error (double) [1]
+    * Tolerance on the representation error (double) (see *[1]*)
     * Tolerance on the pseudo-inverse calculation (double)
 
 * "selectedTimeSteps.txt": Subset of the available time steps where the moments
@@ -49,7 +49,7 @@ this file. It is read line by line and organized as follows:
 hundreds time steps, you may soon run out of memory and the computational time
 may go through the roof.
 
-*[1] See https://hal.archives-ouvertes.fr/hal-01391254 for implementation
+*[1] https://hal.archives-ouvertes.fr/hal-01391254 for implementation
  details*
 
 ### Compilation
