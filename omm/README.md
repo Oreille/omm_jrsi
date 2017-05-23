@@ -13,7 +13,7 @@ your data.
 The demo/ directory is organized as follows:
 * "measurements/": in this directory are stored the moments of your measurements
 (whether experimental or synthetic). For each mth order moment, there should be
-a file named "moment[*m*].txt" of size (nt,1) where nt is the total number of
+a file named "moment[*m*].txt" of size (*nt*,1) where *nt* is the total number of
 time steps in your signals. In this demo, the moments have been computed
 *after* noise had been added to the synthetic measurements.
 * "simulations/": in this directory are stored the model outputs "data.bin" and the
@@ -27,7 +27,7 @@ binary format. Simply run:
 The ascii files should have the following formats:
 
     * data.txt: (numSamples, nT) where numSamples is the total number of samples in the simulation data set.
-    * collocation.txt: (_numSamples_, p) where *p* is the number of uncertain
+    * collocation.txt: (*numSamples*, *p*) where *p* is the number of uncertain
     parameters
 
 * "DE.log" log file: you need to set some parameters of the method in
@@ -42,11 +42,12 @@ It is read line by line and organized as follows:
     * Directory of your measurements set (string)
     * File prefix of your measurements moments (string)
     * Maximum iterations of the Newton method (int)
-    * Tolerance on the representation error (double) (see *[1]*)
+    * Tolerance on the representation error (double) (see [1])
     * Tolerance on the pseudo-inverse calculation (double)
 
 * "selectedTimeSteps.txt": Subset of the available time steps where the moments
-  are to be matched. If this files does not exist, the inverse procedure will
+  are to be matched. Should be a list of indices (without repetition) between 0
+  and *nt*-1. If this files does not exist, the inverse procedure will
   be executed by default on the **whole time grid**. This is not recommended in practice (see *[1]*): if you exceed a couple of
 hundreds time steps, you may soon run out of memory and the computational time
 may go through the roof.
@@ -62,14 +63,9 @@ To compile the code, run the following command:
 
 ### Execution
 
-You also need a file named "selectedTimeSteps.txt" in you case directory. If
-this files does not exist, the inverse procedure will be executed by default on the **whole
-time grid**. This is not recommended in practice (see *[1]*): if you exceed a couple of
-hundreds time steps, you may soon run out of memory and the computational time
-may go through the roof.
-
-When you're ready, execute the program:
 > computePDF demo [OR *your_case_name*]
+
+### Visualization 
 
 The output of the program is stored in an ascii file named "pdf.txt". This file should have
 Nc lines and (p+1) columns. The parameter samples are replicated in the
