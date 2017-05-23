@@ -11,8 +11,9 @@ def readLogFile(logFile):
   N = int(lines[2]); print " | N = ", N,
   maxK = int(lines[4]); print " | maxK = ", maxK, " | ",
   ev_threshold = float(lines[5]); print "ev_threshold ", ev_threshold, " | ",
-  vol = float(lines[6]); print "vol ", vol
-  return caseName, N, maxK, ev_threshold, vol
+  vol = float(lines[6]); print "vol ", vol,
+  glob_iter = int(lines[7]); print " | iter = ", glob_iter
+  return caseName, N, maxK, ev_threshold, vol, glob_iter
 
 def readPDF(caseName, glob_iter, N, vol):
   if (glob_iter==0):
@@ -35,10 +36,9 @@ logFile = sys.argv[1]
 
 #### Read log file ####
 print '-------------------'*5
-caseName, N, maxK, ev_threshold, vol = readLogFile(logFile)
+caseName, N, maxK, ev_threshold, vol, glob_iter = readLogFile(logFile)
 print '-------------------'*5
 #-----------------------
-glob_iter = 0
 
 # PDF at previous iteration
 rho, dim = readPDF(caseName, glob_iter, N, vol)
@@ -74,11 +74,11 @@ print ' done.'
 idx = sp.nonzero(trace >= (trace.max())*ev_threshold)[0]
 numAS = len(idx)
 print str(numAS) + '/' + str(nT) + ' physical DOFs selected after thresholding.'
-
+maxK = min(maxK,numAS)
 X = sp.array(E)[idx,:]
 D = 1.-sp.absolute(sp.dot(X,X.T))
 
-print 'Agglomerative Clustering'
+print 'Agglomerative Clustering:'
 print ' - Initializing Clustering Tree...',
 est = AgglomerativeClustering(linkage="complete",affinity='precomputed',compute_full_tree=True,memory='./cache')
 print ' done.'
@@ -100,7 +100,7 @@ for nK in range(1,maxK+1):
   S.append(selec)
 
 print ' done.'
-print 'Write list of cluster...',
+print 'Write list of clusters...',
 f = open(caseName+'/selList_'+str(glob_iter)+'.txt', 'w')
 for s in S:
     f.writelines(["%u " % item for item in s])
