@@ -31,7 +31,9 @@ The ascii files should have the following formats:
     parameters
 
 * "DE.log" log file: you need to set some parameters of the method in
-this file. It is read line by line and organized as follows:
+this file. 
+
+It is read line by line and organized as follows:
 
     * p: number of parameters (int)
     * Nc: number of samples (int). Must be <= numSamples
