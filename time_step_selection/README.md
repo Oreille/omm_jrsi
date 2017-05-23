@@ -37,7 +37,7 @@ It is read line by line and organized as follows:
 > python extractSelection [caseName] [glob_iter]
   [number_of_selected_time_steps]
 
-** For the demo > python extractSelection demo 0 20
+        * For the demo > python extractSelection demo 0 20
 
 ### Execute OMM
 
