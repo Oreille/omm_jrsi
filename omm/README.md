@@ -26,20 +26,12 @@ binary format. Simply run:
 
 The ascii files should have the following formats:
 
-    * data.bin: (numSamples, nT) where numSamples is the total number of samples in
-the simulation data set.
-    * collocation.bin: (_numSamples_, p) where *p* is the number of uncertain parameters
+    * data.txt: (numSamples, nT) where numSamples is the total number of samples in the simulation data set.
+    * collocation.txt: (_numSamples_, p) where *p* is the number of uncertain
+    parameters
 
-### Compilation
-**Make sure you have Eigen 3 and GSL implementation of BLAS installed**
-
-To compile the code, run the following command:
-> g++ -O3 -I [path_to_Eigen_include] -I [path_to_gsl_include] main.cpp DE.cpp -o computePDF -lgsl -lgslcblas -lm
-
-### Execution
-Before executing the program, you need to set some parameters of the method in
-a log file named "DE.log" and located in your case directory (here the demo/
-directory). The log file is read line by line and organized as follows:
+* "DE.log" log file: you need to set some parameters of the method in
+this file. It is read line by line and organized as follows:
 
     * p: number of parameters (int)
     * Nc: number of samples (int). Must be <= numSamples
@@ -51,7 +43,22 @@ directory). The log file is read line by line and organized as follows:
     * Tolerance on the representation error (double) [1]
     * Tolerance on the pseudo-inverse calculation (double)
 
-*[1] See https://hal.archives-ouvertes.fr/hal-01391254 for implementation details*
+* "selectedTimeSteps.txt": Subset of the available time steps where the moments
+  are to be matched. If this files does not exist, the inverse procedure will
+  be executed by default on the **whole time grid**. This is not recommended in practice (see *[1]*): if you exceed a couple of
+hundreds time steps, you may soon run out of memory and the computational time
+may go through the roof.
+
+*[1] See https://hal.archives-ouvertes.fr/hal-01391254 for implementation
+ details*
+
+### Compilation
+**Make sure you have Eigen 3 and GSL implementation of BLAS installed**
+
+To compile the code, run the following command:
+> g++ -O3 -I [path_to_Eigen_include] -I [path_to_gsl_include] main.cpp DE.cpp -o computePDF -lgsl -lgslcblas -lm
+
+### Execution
 
 You also need a file named "selectedTimeSteps.txt" in you case directory. If
 this files does not exist, the inverse procedure will be executed by default on the **whole
