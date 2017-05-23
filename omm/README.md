@@ -46,7 +46,7 @@ There are several options to visualize the results:
 
 which outputs the point-wise values of the PDF projected onto each parameter
 axis.
-> python plot_pdf_3d.py 
+> python plot_pdf_3d.py pdf.txt
 
 which makes a surface plot (only works when p=2) of the PDF. This only works
 with recent versions of matplotlib.
