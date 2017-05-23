@@ -98,32 +98,25 @@ void DE::initialize(const string& logDir){
   int tmpInt;
 
   tmpInt = s2i(theWholeFile[0]);
-  m_physDim = static_cast<unsigned int>(tmpInt);
-  if (m_physDim !=0){
-    puts("Erreur : seul physDim=0 est implémenté");
-  }
+  m_stochDim = static_cast<unsigned int>(tmpInt); // Stochastic dimension = number of uncertain parameters
 
   tmpInt = s2i(theWholeFile[1]);
-  m_stochDim = static_cast<unsigned int>(tmpInt);
-
+  m_numStochPts = static_cast<unsigned int>(tmpInt); // Number of collocation points (= quadrature points = parameter samples). Must be <= number of rows in data.bin
+  
   tmpInt = s2i(theWholeFile[2]);
-  m_numStochPts = static_cast<unsigned int>(tmpInt);
+  m_numMoments = static_cast<unsigned int>(tmpInt); // Number of moments orders to be matched.
   
-  tmpInt = s2i(theWholeFile[3]);
-  m_numMoments = static_cast<unsigned int>(tmpInt);
-  
-  m_modelDir      = logDir + "/" + theWholeFile[4];
-  m_modelName     = theWholeFile[5];
-  m_momentDir     = logDir + "/" + theWholeFile[6];
-  m_momentName    = theWholeFile[7];
-  m_timeStepsDir  = logDir;
-  m_extension     = theWholeFile[8];
-  m_tolInv        = s2d(theWholeFile[9]);
-  m_maxIter       = s2i(theWholeFile[10]);
-  m_fileFormat    = theWholeFile[11];
-  m_volume        = s2d(theWholeFile[12]);
-  m_tolEta        = s2d(theWholeFile[13]);
-  m_alpha         = s2d(theWholeFile[14]);
+  m_modelDir      = logDir + "/" + theWholeFile[3]; // Directory of data.bin and collocation.bin
+  m_modelName     = "g_"; // Deprecated
+  m_momentDir     = logDir + "/" + theWholeFile[4]; // Directory of measurments
+  m_momentName    = theWholeFile[5]; // File prefix for measured moments (e.g. "moment")
+  m_timeStepsDir  = logDir; // Where to get selectedTimeSteps.txt
+  m_extension     = ".txt"; // Extension of data files in ascii format
+  m_maxIter       = s2i(theWholeFile[6]); // Maximum number of iterations in the Newton method
+  m_fileFormat    = "binary"; // Only binary for this release
+  m_volume        = s2d(theWholeFile[7]); // Stochastic volume. Necessary if you want your PDF to integrate to 1.
+  m_tolEta        = s2d(theWholeFile[8]); // Tolerance on the representation error
+  m_alpha         = s2d(theWholeFile[9]); // Tolerance on the pseudo-inverse calculation
   if (m_fileFormat != "ascii" && m_fileFormat != "binary"){
     puts("Error: Only ascii and binary files are currently supported. Check your DE.log file.");
   }
@@ -316,7 +309,7 @@ void DE::findSaddlePoint(){
     S.topLeftCorner(tr,tr) = Sfull.topLeftCorner(tr,tr);
     double eta = ( expMom.transpose() - expMom.transpose() * V * V.transpose()).norm() / expMom.norm();
     //double eta = ( MatrixXd::Identity(nH-1,nH-1) - V * V.transpose() ).norm();
-    cout << tr << " " << eta << endl;
+    //cout << tr << " " << eta << endl;
     if (eta < m_tolEta){
       trunc = tr;
       break;
@@ -394,11 +387,8 @@ void DE::findSaddlePoint(){
 
     cout << " | |x|= " << x.norm() << " | cond= " << cond<< " | sigma= " << kount <<"/"<<trunc+1 << endl;
     //cout << "nH = " << nH << endl;
-    cout << "x.cols = " << x.cols() << "x.rows = " << x.rows() << endl;
     beta -= x.head(trunc);
-    cout << "OK 1" << endl;
     mu   -= (x.tail(1))(0);
-    cout << "OK 2" << endl;
 
   }
 
@@ -558,10 +548,10 @@ void DE::saveResult2(){
   }
   outPDF.close();
 
-  ofstream outLambda("lambda.txt");
-  outLambda.precision(15);
-  outLambda << scientific << m_lambda << endl << m_mu << endl;
-  outLambda.close();
+  // ofstream outLambda("lambda.txt");
+  // outLambda.precision(15);
+  // outLambda << scientific << m_lambda << endl << m_mu << endl;
+  // outLambda.close();
 
 
 }

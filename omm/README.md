@@ -26,7 +26,8 @@ binary format. Simply run:
 
 The ascii files should have the following formats:
 
-    * data.bin: (numSamples, nT) where numSamples is the size 
+    * data.bin: (numSamples, nT) where numSamples is total number of samples in
+the simulation data set.
     * collocation.bin: (numSamples, p) where p is the number of uncertain parameters
 
 ### Compilation
@@ -40,9 +41,18 @@ Before executing the program, you need to set some parameters of the method in
 a log file named "DE.log" and located in your case directory (here the demo/
 directory). The log file is read line by line and organized as follows:
 
-    * 
+    * Number of parameters (int)
+    * Number of samples (int). Must be <= numSamples
+    * Number of moments (int)
+    * Directory of your simulations set (string)
+    * Directory of your measurements set (string)
+    * File prefix of your measurements moments (string)
+    * Maximum iterations of the Newton method (int)
+    * Tolerance on the representation error (double) [1]
+    * Tolerance on the pseudo-inverse calculation
 
-    * 
+*[1] See https://hal.archives-ouvertes.fr/hal-01391254 for implementation details*
+
 
 Then execute the program:
 > computePDF demo [or *your_case_name*]
