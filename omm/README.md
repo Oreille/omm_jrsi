@@ -13,7 +13,7 @@ your data.
 The demo/ directory is organized as follows:
 * "measurements/": in this directory are stored the moments of your measurements
 (whether experimental or synthetic). For each mth order moment, there should be
-a file named "moment[*m*].txt" of size (*nt*,1) (*i.e.* nt rows and 1 column) where *nt* is the total number of
+a file named "moment[*m*].txt" of size (*nt*,1) (*i.e.* *nt* rows and 1 column) where *nt* is the total number of
 time steps in your signals. In this demo, the moments have been computed
 *after* noise had been added to the synthetic measurements.
 * "simulations/": in this directory are stored the model outputs "data.bin" and the
@@ -26,14 +26,13 @@ binary format. Simply run:
 [your_file_in_ascii_format_with_txt_extension]
 
 Conversely, if you want to convert the binary files in the demo directory to
-ascci files, execute the following command:
+ascii files, execute the following command:
 > python ../../../utils/deflate.py [file_in_binary_format_with_bin_extension]
 
 The corresponding ascii files should have the following formats:
 
-    * data.txt: (numSamples, nt) where numSamples is the total number of samples in the simulation data set.
-    * collocation.txt: (numSamples, p) where p is the number of uncertain
-    parameters
+    * data.txt: (numSamples, nt) where numSamples is the total number of samples in the simulation data set. This is the file where are stored the outputs of the simulations (for instance action potential time traces). Each row corresponds to a simulation with a given set of parameters.
+    * collocation.txt: (numSamples, p) where p is the number of uncertain parameters. This the file where are stored the parameters values in the same order as in the data.txt file. Each row corresponds to the set of parameters used to simulate the same row in data.txt.
 
 * "DE.log" log file: you need to set some parameters of the method in
 this file. 
