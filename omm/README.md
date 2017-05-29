@@ -13,7 +13,7 @@ your data.
 The demo/ directory is organized as follows:
 * "measurements/": in this directory are stored the moments of your measurements
 (whether experimental or synthetic). For each mth order moment, there should be
-a file named "moment[*m*].txt" of size (*nt*,1) where *nt* is the total number of
+a file named "moment[*m*].txt" of size (*nt*,1) (*i.e.* nt rows and 1 column) where *nt* is the total number of
 time steps in your signals. In this demo, the moments have been computed
 *after* noise had been added to the synthetic measurements.
 * "simulations/": in this directory are stored the model outputs "data.bin" and the
@@ -29,9 +29,9 @@ Conversely, if you want to convert the binary files in the demo directory to
 ascci files, execute the following command:
 > python ../../../utils/deflate.py [file_in_binary_format_with_bin_extension]
 
-The ascii files should have the following formats:
+The corresponding ascii files should have the following formats:
 
-    * data.txt: (numSamples, nT) where numSamples is the total number of samples in the simulation data set.
+    * data.txt: (numSamples, nt) where numSamples is the total number of samples in the simulation data set.
     * collocation.txt: (numSamples, p) where p is the number of uncertain
     parameters
 
@@ -52,7 +52,7 @@ It is read line by line and organized as follows:
 
 * "selectedTimeSteps.txt": Subset of the available time steps where the moments
   are to be matched. Should be a list of indices (without repetition) between 0
-  and *nt*-1. If this files does not exist, the inverse procedure will
+  and nt-1. If this files does not exist, the inverse procedure will
   be executed by default on the **whole time grid**. This is not recommended in practice (see *[1]*): if you exceed a couple of
 hundreds time steps, you may soon run out of memory and the computational time
 may go through the roof.
@@ -64,7 +64,8 @@ may go through the roof.
 **Make sure you have Eigen 3 and GSL implementation of BLAS installed**
 
 To compile the code, run the following command:
-> g++ -O3 -I [path_to_Eigen_include] -I [path_to_gsl_include] main.cpp DE.cpp -o computePDF -lgsl -lgslcblas -lm
+> g++ -O3 -I [path_to_Eigen_include] -I [path_to_gsl_include] main.cpp DE.cpp
+-o computePDF -L [path_to_gsl_lib] -lgsl -lgslcblas -lm
 
 ### Execution
 

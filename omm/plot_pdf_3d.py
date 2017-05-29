@@ -20,15 +20,14 @@ dim = pdf.shape[1]-1
 s = ((1,1),(1,2),(2,2),(2,2),(2,3),(2,3),(2,4),(2,4))
 triang = tri.Triangulation(pdf[:,0],pdf[:,1])
 
-zmax = 0.5
+#zmax = 0.5
 fig1 = plt.figure(figsize=[13.,6.])
 ax = fig1.add_subplot(111, projection='3d')
 ax.plot_trisurf(pdf[:,0],pdf[:,1],pdf[:,2],cmap=cm.jet,linewidth=0.1)
 ax.view_init(elev=25., azim=300.)
-te=ax.text(2.5, 3.5, .7*sp.amax(pdf[:,2]), 'ESTIMATED PDF', None,fontsize=16,family='sans-serif',weight='heavy')
-te.set_bbox(dict(facecolor='white',boxstyle='round',pad=0.5,edgecolor=[.1,.1,.8]))
+ax.set_title('ESTIMATED PDF')
 plt.xlabel('$\\theta_1$');plt.ylabel('$\\theta_2$');ax.set_zlabel('$\\rho$')
-ax.set_zlim(0.,zmax)
+#ax.set_zlim(0.,zmax)
 
 
 fig1.tight_layout(pad=0.1,h_pad=1.0,w_pad=0.)

@@ -3,7 +3,7 @@
 ### Welcome to our omm_jrsi project !
 
 ![Front page illustration](./images/omm.png "Is this a log-normal distribution?")
-
+<center><img src="./images/omm.png" title="Is this a log-normal distribution?" alt="Front page illustration" height="150" width="200"></center>
 ### What is this?
 
 In this repository, you will find the data and codes corresponding to our submission to the
@@ -21,5 +21,8 @@ Journal of the Royal Society Interface. The repository is organized as follows:
   * ./test_case_3: This is an experimental data set consisting of AP biomarkers from canine ventricular myocytes.  
   * ./test_case_4: This is an experimental data set consisting of AP biomarkers from human atrial cardiomyocytes.
 
-*[1] For further information about OMM and the time step selection alforithm, we refer to the following paper: https://hal.archives-ouvertes.fr/hal-01391254*
+*[1] For further information about OMM and the time step selection alforithm,
+ we refer to the following paper:
+ https://hal.archives-ouvertes.fr/hal-01391254*
+
 *[2] For details about AP models and data, we refer to the following paper: (submitted)*
