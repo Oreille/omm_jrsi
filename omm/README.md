@@ -31,7 +31,10 @@ ascii files, execute the following command:
 
 The corresponding ascii files should have the following formats:
 
-    * data.txt: (numSamples, nt) where numSamples is the total number of samples in the simulation data set. This is the file where are stored the outputs of the simulations (for instance action potential time traces). Each row corresponds to a simulation with a given set of parameters.
+    * data.txt: (numSamples, nt) where numSamples is the total number of samples in the simulation 
+data set. This is the file where are stored the outputs of the simulations 
+(for instance action potential time traces). Each row corresponds to a
+simulation with a given set of parameters.
     * collocation.txt: (numSamples, p) where p is the number of uncertain parameters. This the file where are stored the parameters values in the same order as in the data.txt file. Each row corresponds to the set of parameters used to simulate the same row in data.txt.
 
 * "DE.log" log file: you need to set some parameters of the method in
