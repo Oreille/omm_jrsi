@@ -2,8 +2,10 @@
 
 ### Welcome to our omm_jrsi project !
 
-![Front page illustration](./images/omm.png "Is this a log-normal distribution?")
-<center><img src="./images/omm.png" title="Is this a log-normal distribution?" alt="Front page illustration" height="150" width="200"></center>
+
+<center><img src="./images/omm.png" title="Is this a log-normal distribution?"
+alt="Front page illustration"></center>
+
 ### What is this?
 
 In this repository, you will find the data and codes corresponding to our submission to the
