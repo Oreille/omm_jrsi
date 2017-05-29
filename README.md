@@ -3,8 +3,8 @@
 ### Welcome to our omm_jrsi project !
 
 
-<center><img src="./images/omm.png" title="Is this a log-normal distribution?"
-alt="Front page illustration"></center>
+<p style="text-align:center;"><img src="./images/omm.png" title="Is this a log-normal distribution?"
+alt="Front page illustration"></p>
 
 ### What is this?
 
