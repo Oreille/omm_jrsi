@@ -20,3 +20,5 @@ Journal of the Royal Society Interface. The repository is organized as follows:
   * ./test_case_2: This is a synthetic data set consisting of AP biomarkers generated with the model by Courtemanche [1].
   * ./test_case_3: This is an experimental data set consisting of AP biomarkers from canine ventricular myocytes.  
   * ./test_case_4: This is an experimental data set consisting of AP biomarkers from human atrial cardiomyocytes.
+
+*[1] For details about AP models and data, we refer to the following paper: (submitted)*
