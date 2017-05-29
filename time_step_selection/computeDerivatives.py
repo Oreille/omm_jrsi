@@ -3,6 +3,7 @@ import itertools as ito
 import scipy as sp
 import scipy.linalg as lin
 from sklearn.neighbors import KDTree
+sys.path.append("../utils")
 from ioBin import *
 import multiprocessing
 

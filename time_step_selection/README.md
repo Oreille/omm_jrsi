@@ -3,9 +3,14 @@
 ### This the numerical code used to select the time steps subset to be used in OMM
 
 The code is written in Python (required version: 3.4) and is divided into three files:
-* computeDerivatives.py
-* activeClustering.py
-* extractSelection.py
+* computeDerivatives.py: computes the derivatives of the observable
+respect to the parameters for each time step.
+* activeClustering.py: computes the sensitivity Gram matrix (see [1]) and its
+eigenvalues for each time step. The time steps are then clustered according to
+a similarity criterion (see [1]) and a best representative is chosen for each
+cluster. The clustering is done once and for all for every number of clusters.
+* extractSelection.py: extracts the asked number of time steps (*i.e.* number
+of clusters).
 
 ### Data
 
@@ -30,14 +35,16 @@ It is read line by line and organized as follows:
 
 ### Execution
 
+**Make sure you have Scikit-learn Python library installed** (if not, go to http://scikit-learn.org)
+
 > python computeDerivatives.py TSS.log
 
 > python activeClustering.py TSS.log
 
-> python extractSelection [caseName] [glob_iter]
+> python extractSelection.py [caseName] [glob_iter]
   [number_of_selected_time_steps]
 
-        * For the demo > python extractSelection demo 0 20
+        * For the demo > python extractSelection.py demo 0 20
 
 ### Execute OMM
 
