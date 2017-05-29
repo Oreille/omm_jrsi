@@ -6,14 +6,17 @@
 
 ### What is this?
 
-You will find here the data and codes corresponding to our submission to the
+In this repository, you will find the data and codes corresponding to our submission to the
 Journal of the Royal Society Interface. The repository is organized as follows:
 
 * Codes
-  * ./omm: 
-  * ./time_step_selection:
+
+  * ./omm: OMM stands for Observable Moment Matching. This method estimates the PDF of hidden parameters from the statistical moments of dome observable quantities. Try our demo test case and learn more about it by reading ./omm/README.md. 
+  * ./time_step_selection: OMM on its own might become computationally challenging when confronted to high-dimensional observables. You will find in this directory a program that selects a subset of the available time steps of your signal to be fed to OMM. Read ./time_step_selection/README.md forfurther instructions.
+
 * Data
-  *./test_case_1:
+
+  * ./test_case_1: This is a synthetic data set consisting of Action Potential (AP) traces generated with the model by Decker [1].
   * ./test_case_2:
   * ./test_case_3:
   * ./test_case_4:      
