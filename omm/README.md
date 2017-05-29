@@ -22,7 +22,12 @@ algorithm).
 For speed and memory reasons, the program takes these files in binary
 format. If you're using your own data, you must convert your ascii files to our
 binary format. Simply run:
-> python ../compress.py [your_file_in_ascii_format_with_txt_extension]
+> python ../../../utils/compress.py
+[your_file_in_ascii_format_with_txt_extension]
+
+Conversely, if you want to convert the binary files in the demo directory to
+ascci files, execute the following command:
+> python ../../../utils/deflate.py [file_in_binary_format_with_bin_extension]
 
 The ascii files should have the following formats:
 
@@ -79,12 +84,3 @@ axis.
 
 which makes a surface plot (only works when p=2) of the PDF. This only works
 with recent versions of matplotlib.
-
-
-## To execute only the demo, run the following commands:
->g++ -O3 -I [path_to_Eigen_include] -I [path_to_gsl_include] main.cpp DE.cpp -o
-computePDF -lgsl -lgslcblas -lm
-
->computePDF demo
-
->python pdfplot.py pdf.txt
