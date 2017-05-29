@@ -9,7 +9,7 @@ The code is written in Python (required version: 3.4) and is divided into three 
 
 ### Data
 
-* All data required for the OMM procedure (see OMM/README.md) 
+* All data required for the OMM procedure (see ../OMM/README.md) 
 
 * "TSS.log" log file: you need to set some parameters of the method in
 this file. 
