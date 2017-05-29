@@ -9,11 +9,11 @@
 You will find here the data and codes corresponding to our submission to the
 Journal of the Royal Society Interface. The repository is organized as follows:
 
-    * Codes
-        * ./omm: 
-        * ./time_step_selection
-    * Data
-        * ./test_case_1:
-        * ./test_case_2:
-        * ./test_case_3:
-        * ./test_case_4:      
+* Codes
+  * ./omm: 
+  * ./time_step_selection:
+* Data
+  *./test_case_1:
+  * ./test_case_2:
+  * ./test_case_3:
+  * ./test_case_4:      
