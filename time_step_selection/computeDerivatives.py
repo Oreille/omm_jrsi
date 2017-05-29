@@ -8,12 +8,12 @@ from ioBin import *
 import multiprocessing
 
 
-def readLogFile(logFile):
-  with open(logFile,'r') as f: lines = f.readlines()
-  caseName = lines[0][:-1]; print "\n  caseName: ", caseName,
-  nProcs = int(lines[1]); print " | nProcs = ", nProcs, " | ",
-  nC = int(lines[2]); print "nC = ", nC, " | ",
-  neighbour_regularization = int(lines[3]); print "neighbor_reg = ",neighbour_regularization
+def readInputFile(inputFile):
+  with open(inputFile,'r') as f: lines = f.readlines()
+  caseName = lines[0][:-1]; print "|  caseName: ", caseName,
+  nProcs = int(lines[1]); print " |  nProcs = ", nProcs,
+  nC = int(lines[2]); print " |  N = ", nC,
+  neighbour_regularization = int(lines[3]); print " |  neighbor_reg = ",neighbour_regularization
   return caseName, nProcs, nC, neighbour_regularization
 
 def collMatrix(u, u0):
@@ -49,11 +49,14 @@ def mp_deriv(it):
   return (dfdx,n2Err)
 
 if (len(sys.argv) != 2):
-  sys.exit("Error. There should be ONE argument. Specify the name of your log file.")
-logFile = sys.argv[1]
+  sys.exit("Error. There should be ONE argument. Specify the name of your input file.")
+inputFile = sys.argv[1]
 
-#### Read log file ####
-caseName, nProcs, nC, neighbour_regularization = readLogFile(logFile)
+#### Read input file ####
+paddingDashes = '-'*17*6; miniPadding = ' '*40
+print paddingDashes+'\n|'+miniPadding+'COMPUTE DERIVATIVES '+miniPadding+'|\n'+paddingDashes
+caseName, nProcs, nC, neighbour_regularization = readInputFile(inputFile)
+print paddingDashes
 #-----------------------
 
 dirName = '../omm/'+caseName
@@ -85,8 +88,8 @@ n2Err = sp.asarray([p[1] for p in P])
 os.system('mkdir -pv '+caseName)
 for d in range(dim):
   fileName = caseName+'/dgdx'+str(d+1)+'.bin'
-  print '  Writing to ',fileName
+  print '  Writing to ',fileName,'...',
   i = writeLargeBin(fileName,output[:,:,d])
-
+  print ' done.'
 print '\n'
 sp.savetxt(caseName+'/mean_fitting_error.txt',sp.mean(n2Err,1))

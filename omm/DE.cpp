@@ -78,9 +78,9 @@ void DE::initialize(const string& logDir){
   string tmpString;
   vector<string> theWholeFile;
   
-  string fname = logDir + "/DE.log";
+  string fname = logDir + "/DE.in";
   cout << endl;
-  cout << "Opening the log File: " << fname <<endl;
+  cout << "Opening the input file: " << fname <<endl;
   
   ifstream logFile;
   logFile.open(fname.c_str());  
@@ -118,7 +118,7 @@ void DE::initialize(const string& logDir){
   m_tolEta        = s2d(theWholeFile[8]); // Tolerance on the representation error
   m_alpha         = s2d(theWholeFile[9]); // Tolerance on the pseudo-inverse calculation
   if (m_fileFormat != "ascii" && m_fileFormat != "binary"){
-    puts("Error: Only ascii and binary files are currently supported. Check your DE.log file.");
+    puts("Error: Only ascii and binary files are currently supported. Check your DE.in file.");
   }
   m_user_lambda = true;
   // Initialization completed

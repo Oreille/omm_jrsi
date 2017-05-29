@@ -16,7 +16,7 @@ of clusters).
 
 * All data required for the OMM procedure (see ../OMM/README.md) 
 
-* "TSS.log" log file: you need to set some parameters of the method in
+* "TSS.in" input file: you need to set some parameters of the method in
 this file. 
 
 It is read line by line and organized as follows:
@@ -35,11 +35,11 @@ It is read line by line and organized as follows:
 
 ### Execution
 
-**Make sure you have Scikit-learn Python library installed** (if not, go to http://scikit-learn.org)
+**Make sure you have the Scikit-learn Python library installed** (if not, go to http://scikit-learn.org)
 
-> python computeDerivatives.py TSS.log
+> python computeDerivatives.py TSS.in
 
-> python activeClustering.py TSS.log
+> python activeClustering.py TSS.in
 
 > python extractSelection.py [caseName] [glob_iter]
   [number_of_selected_time_steps]
@@ -48,5 +48,5 @@ It is read line by line and organized as follows:
 
 ### Execute OMM
 
-You can now move the "selectedTimeSteps.txt" file to your case folder in the ../OMM/
+You can now move the "selectedTimeSteps.txt" file to your case folder located in the ../OMM/
 directory and execute the inverse procedure.

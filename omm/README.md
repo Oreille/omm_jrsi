@@ -39,7 +39,7 @@ The corresponding ascii files should have the following formats:
     file where are stored the parameters values in the same order as in the data.txt file. 
     Each row corresponds to the set of parameters used to simulate the same row in data.txt.
 
-* "DE.log" log file: you need to set some parameters of the method in
+* "DE.in" input file: you need to set some parameters of the method in
 this file. 
 
 It is read line by line and organized as follows:

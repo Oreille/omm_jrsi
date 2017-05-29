@@ -5,14 +5,14 @@ sys.path.append('../utils')
 from ioBin import *
 from sklearn.cluster import AgglomerativeClustering
 
-def readLogFile(logFile):
-  with open(logFile,'r') as f: lines = f.readlines()
-  caseName = lines[0][:-1]; print "|  caseName: ", caseName,
-  N = int(lines[2]); print " | N = ", N,
-  maxK = int(lines[4]); print " | maxK = ", maxK, " | ",
-  ev_threshold = float(lines[5]); print "ev_threshold ", ev_threshold, " | ",
-  vol = float(lines[6]); print "vol ", vol,
-  glob_iter = int(lines[7]); print " | iter = ", glob_iter
+def readInputFile(inputFile):
+  with open(inputFile,'r') as f: lines = f.readlines()
+  caseName = lines[0][:-1]; print "|  caseName:", caseName,
+  N = int(lines[2]); print " |  N =", N,
+  maxK = int(lines[4]); print " |  maxK =", maxK,
+  ev_threshold = float(lines[5]); print " |  ev_threshold =", ev_threshold,
+  vol = float(lines[6]); print " |  vol =", vol,
+  glob_iter = int(lines[7]); print " |  iter =", glob_iter
   return caseName, N, maxK, ev_threshold, vol, glob_iter
 
 def readPDF(caseName, glob_iter, N, vol):
@@ -31,13 +31,14 @@ def readPDF(caseName, glob_iter, N, vol):
 
 
 if (len(sys.argv) != 2):
-  sys.exit("Error. There should be ONE argument. Specify the name of your log file.")
-logFile = sys.argv[1]
+  sys.exit("Error. There should be ONE argument. Specify the name of your input file.")
+inputFile = sys.argv[1]
 
-#### Read log file ####
-print '-------------------'*5
-caseName, N, maxK, ev_threshold, vol, glob_iter = readLogFile(logFile)
-print '-------------------'*5
+#### Read input file ####
+paddingDashes = '-'*17*6; miniPadding = ' '*41
+print paddingDashes+'\n|'+miniPadding+'ACTIVE CLUSTERING '+miniPadding+'|\n'+paddingDashes
+caseName, N, maxK, ev_threshold, vol, glob_iter = readInputFile(inputFile)
+print paddingDashes
 #-----------------------
 
 # PDF at previous iteration
