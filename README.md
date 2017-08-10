@@ -28,4 +28,6 @@ Journal of the Royal Society Interface. The repository is organized as follows:
  we refer to the following paper:
  https://hal.archives-ouvertes.fr/hal-01391254*
 
-*[2] For details about AP models and data, we refer to the following paper: (submitted)*
+*[2] For details about AP models and data, we refer to the following paper
+ (accepted for publication in the Journal of The Royal Society Interface):
+ https://hal.archives-ouvertes.fr/hal-01570828*
